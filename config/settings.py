@@ -142,4 +142,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # telegram bot creds
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 TELEGRAM_CHANNEL_ID = os.getenv('TELEGRAM_CHANNEL_ID')
-BASE_URL = "https://api.telegram.org/bot{}/sendMessage?chat_id={}&text={}"
+BASE_URL ="https://api.telegram.org/bot{}/sendMessage?chat_id={}&text={}"
