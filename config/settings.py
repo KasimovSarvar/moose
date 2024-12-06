@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 from django.conf.global_settings import STATICFILES_DIRS, STATIC_ROOT, MEDIA_URL, MEDIA_ROOT
 
@@ -22,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--@=$q96vs2w9xbo-h200041ly+1#es9rl^1&(#_*4od2zpz-x+'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = ['127.0.0.1', '192.168.20.139', '192.168.100.26']
 
@@ -137,5 +140,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # telegram
-TELEGRAM_BOT_TOKEN = '7632821064:AAFFKswCcPGUObAES2a2AF6mSKzNnvvhM4I'
-TELEGRAM_CHANNEL_ID = 1392306910
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+TELEGRAM_CHANNEL_ID = os.getenv('TELEGRAM_CHANNEL_ID')
