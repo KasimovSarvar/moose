@@ -63,12 +63,10 @@ def contact_view(request):
         email = data.get('email')
         subject = data.get('subject')
         message = data.get('message')
-
         obj = Contact.objects.create(full_name = name, email = email, subject = subject, message = message)
         obj.save()
-        text = f'name: {name} \nemail: {email} \nsubject: {subject} \nmessage:{message}'
-        url = f"https://api.telegram.org/bot{settings.TELEGRAM_BOT_TOKEN}/sendMessage?chat_id={settings.TELEGRAM_CHANNEL_ID}&text={text}"
-        res = requests.get(url)
+        res = requests.get(settings.BASE_URL.format(settings.TELEGRAM_BOT_TOKEN, settings.TELEGRAM_CHANNEL_ID,
+                                            f'name: {name} \nemail: {email} \nsubject: {subject} \nmessage:{message}'))
         print(res)
         return redirect('/contact')
 
